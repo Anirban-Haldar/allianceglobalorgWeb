@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        <title>Vela | Luxe Travel Redefined</title>
+        
+        <!-- SEO -->
+        <meta name="description" content="Vela Travel - Ultra-luxury journeys, curated escapes, and bespoke adventures around the world.">
+  
+        <!-- Google Fonts: Elegant + Modern -->
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+        <!-- Bootstrap 5 CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+        <!-- Font Awesome 6 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+        <!-- AOS Animation -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        
+        <!-- Swiper JS (Carousels) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        
+        
+        <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0a0c10;
+      color: #eef2f5;
+      overflow-x: hidden;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1e24;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ff6a4b;
+      border-radius: 20px;
+    }
+
+    /* preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #050608;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255, 106, 75, 0.2);
+      border-top: 5px solid #ff6a4b;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* sticky navbar premium */
+    .navbar-premium {
+      background: rgba(10, 12, 16, 0.85);
+      backdrop-filter: blur(16px);
+      transition: all 0.3s ease;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-premium.scrolled {
+      background: rgba(5, 7, 10, 0.98);
+      padding: 0.6rem 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.9rem;
+      background: linear-gradient(135deg, #ffb347, #ff6a4b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .nav-link {
+      font-weight: 600;
+      color: #f0f3f8 !important;
+      margin: 0 0.6rem;
+      transition: 0.25s;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #ff6a4b !important;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #ffb347, #ff6a4b);
+      transition: 0.3s;
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* hero swiper */
+    .hero-swiper {
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+    }
+    .hero-slide {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: absolute;
+      bottom: 20%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
+      color: white;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .hero-content h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, #ffcba4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .btn-glow {
+      background: linear-gradient(45deg, #ff6a4b, #ff8c42);
+      border: none;
+      padding: 12px 38px;
+      border-radius: 50px;
+      font-weight: 700;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255, 106, 75, 0.4);
+    }
+    .btn-glow:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(255, 106, 75, 0.6);
+      background: linear-gradient(45deg, #ff7a55, #ffa055);
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #fff, #ffa56e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .glass-card {
+      background: rgba(20, 25, 35, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    /* service cards */
+    .service-card {
+      background: rgba(20, 28, 38, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(255, 106, 75, 0.2);
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-15px) rotateX(3deg);
+      box-shadow: 0 25px 40px -12px rgba(255, 106, 75, 0.3);
+      border-color: #ff6a4b;
+    }
+    .service-icon {
+      font-size: 3.5rem;
+      background: linear-gradient(145deg, #ffb347, #ff6a4b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Flip cards */
+    /* ONLY affects honey card */
+.flip-card {
+  perspective: 1000px;
+  padding: 0; /* remove inner spacing for flip */
+}
+
+.flip-card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Flip on hover */
+.flip-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* FRONT + BACK */
+.flip-card .card-front,
+.flip-card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 98%;
+  backface-visibility: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  border-radius: 28px;
+}
+
+/* FRONT (default view) */
+.flip-card .card-front {
+  background: rgba(20, 28, 38, 0.7);
+}
+
+/* BACK (after flip) */
+.flip-card .card-back {
+  background: rgba(20, 28, 38, 0.9);
+  transform: rotateY(180deg);
+}
+
+/* image styling */
+.flip-card .card-back img {
+  /* width: 80px;
+  height: auto; */
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+
+
+/* Product Details Section */
+.product-details-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0c10;
+  z-index: 9999;
+  overflow-y: auto;
+  display: none;
+}
+.product-details-section.show {
+  display: block;
+}
+
+/* product cards */
+.product-item {
+  background: #11161f;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.product-item:hover {
+  transform: translateY(-8px);
+}
+
+/* Image Modal Section */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+}
+.image-modal.show {
+  display: flex;
+}
+
+
+
+/* make swiper slides proper width */
+.category-swiper .swiper-slide {
+  width: auto;
+  max-width: 280px;
+}
+
+/* spacing */
+.category-swiper {
+  padding: 20px 10px;
+}
+
+/* arrows style */
+.category-next,
+.category-prev {
+  color: #ff6a4b;
+}
+
+.category-next::after,
+.category-prev::after {
+  font-size: 20px;
+}
+
+/* ACTIVE CENTER CARD EFFECT 🔥 */
+.category-swiper .swiper-slide {
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: 0.4s;
+}
+
+.category-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.category-swiper .swiper-slide-active .service-card {
+  box-shadow: 0 25px 40px -12px rgba(255, 106, 75, 0.4);
+}
+
+/* responsive fix */
+@media (max-width: 768px) {
+  .category-swiper .swiper-slide {
+    max-width: 220px;
+  }
+}
+
+
+
+    /* product cards */
+    .product-card {
+      border-radius: 28px;
+      overflow: hidden;
+      background: #11161f;
+      transition: all 0.5s;
+      box-shadow: 0 15px 25px -10px rgba(0,0,0,0.4);
+    }
+    .product-card img {
+      transition: transform 0.7s ease;
+      height: 260px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .product-card:hover img {
+      transform: scale(1.1);
+    }
+    .product-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 40px -12px #ff6a4b40;
+    }
+
+    /* parallax layers */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .overlay-dark {
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: brightness(0.8);
+      padding: 5rem 0;
+    }
+
+    /* counter */
+    .counter-box {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,106,75,0.3);
+    }
+    .counter-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #ff8c42;
+    }
+
+    /* testimonials */
+    .testi-card {
+      background: rgba(25, 30, 40, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 40px;
+      padding: 2rem;
+      margin: 1rem;
+      border: 1px solid rgba(255,106,75,0.3);
+      transition: 0.3s;
+    }
+
+    /* contact form */
+    .contact-form {
+      background: rgba(18, 24, 32, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 36px;
+      padding: 2rem;
+    }
+    .form-control-custom {
+      background: #1e2630;
+      border: 1px solid #2f3a46;
+      color: white;
+      border-radius: 60px;
+      padding: 12px 20px;
+    }
+    .form-control-custom:focus {
+      background: #252f3a;
+      border-color: #ff6a4b;
+      box-shadow: 0 0 0 0.2rem rgba(255,106,75,0.25);
+    }
+    footer {
+      background: #030507;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      background: #ff6a4b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .dark-mode-toggle {
+      background: #2a2f36;
+      border-radius: 40px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    @media (max-width: 992px) {
+      .hero-content h1 { font-size: 2.8rem; }
+      .section-title { font-size: 2.2rem; }
+    }
+        </style>
+    </head>
+    
+    <body>
+        
+        <!-- Preloader -->
+        <div id="preloader"><div class="loader"></div></div>
+
+        <!-- Back to top button -->
+        <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+        <!-- Sticky Navbar -->
+        <nav class="navbar navbar-expand-lg fixed-top navbar-premium" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#">VELA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-2">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Offers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#reasons">Top 10</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item ms-2"><div class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-adjust"></i> <span class="d-none d-md-inline"> Luxe</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO CAROUSEL (zoom + fade) -->
+        <section id="home">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide hero-slide" style="background-image: url('https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                        <div class="hero-content animate__animated animate__fadeInUp">
+                            <!-- <h1>Beyond Horizons</h1>
+                            <p class="lead fs-3">Luxury travel, reimagined.</p>
+                            <a href="#contact" class="btn btn-glow mt-3">Discover More <i class="fas fa-arrow-right ms-2"></i></a> -->
+                            <h1>Global Export Excellence</h1>
+                            <p class="lead fs-3">Premium Indian products delivered worldwide.</p>
+                            <a href="#products" class="btn btn-glow mt-3">Explore Products</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide hero-slide" style="background-image: url('https://images.pexels.com/photos/3385159/pexels-photo-3385159.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                        <div class="hero-content">
+                            <h1>Oceanfront Splendor</h1>
+                            <p>Private islands & overwater villas</p>
+                            <a href="#products" class="btn btn-glow">Explore Offers</a>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide hero-slide" style="background-image: url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                        <div class="hero-content">
+                            <h1>Alpine Majesty</h1>
+                            <p>Chalets & helicopter experiences</p>
+                            <a href="#contact" class="btn btn-glow">Reserve Now</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <!-- About Section split layout -->
+        <section id="about" class="py-5" style="background: #0b0e14;">
+            <div class="container py-5">
+                <div class="row align-items-center g-5">
+                    
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="rounded-4 overflow-hidden shadow-lg">
+                            <img src="https://images.pexels.com/photos/2317904/pexels-photo-2317904.jpeg?auto=compress&cs=tinysrgb&w=1200" class="img-fluid" alt="luxury travel" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                        <span class="badge bg-danger bg-opacity-25 text-warning px-3 py-2 rounded-pill">
+                            <i class="fas fa-gem me-1"></i> Curated by experts
+                        </span>
+                        <!-- <h2 class="section-title mt-3">Timeless Elegance, <br>Personalized Journeys</h2>
+                        <p class="lead">Vela is the epitome of high-end travel — bespoke itineraries, dedicated concierge, and access to the world's most exclusive destinations.</p>
+                        <p>From private jet charters to VIP cultural experiences, we design every detail to exceed expectations.</p>
+                        <div class="d-flex gap-4 mt-4"><i class="fas fa-check-circle text-warning fa-2x"></i><div><strong>White-Glove Service</strong><br>24/7 luxury support</div></div>
+                        <div class="d-flex gap-4 mt-3"><i class="fas fa-map-marked-alt text-warning fa-2x"></i><div><strong>100% Tailor-made</strong><br>No pre-set packages, only your dream trip</div></div> -->
+
+                        <h2 class="section-title mt-3">Trusted Export Partner</h2>
+                        <p class="lead"> We specialize in exporting premium agricultural products from India to global markets. </p>
+                        <p> From honey and rice to tea and spices, we ensure quality sourcing, hygienic processing, and reliable logistics. </p>
+
+                        <div class="d-flex gap-4 mt-4">
+                            <i class="fas fa-check-circle text-warning fa-2x"></i>
+                            <div><strong>Global Reach</strong><br>Serving clients worldwide</div>
+                        </div>
+
+                        <div class="d-flex gap-4 mt-3">
+                            <i class="fas fa-industry text-warning fa-2x"></i>
+                            <div><strong>Quality Assured</strong><br>Strict quality control</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="py-5" style="background: #07090e;">
+            <div class="container py-4">
+                <div class="text-center mb-5" data-aos="zoom-in">
+                    <h2 class="section-title">Exquisite Services</h2>
+                    <p class="text-secondary">Unrivaled luxury at every step</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-fan"></i>
+                            </div>
+                            <h4>Private Aviation</h4>
+                            <p>Global fleet, seamless VIP terminals.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="200">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h4>Wellness Retreats</h4>
+                            <p>Ayurveda, yoga & anti-stress escapes.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="300">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h4>Michelin Dining</h4>
+                            <p>Private chefs & gastronomic tours.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="flip-left" data-aos-delay="400">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-ship"></i>
+                            </div>
+                            <h4>Superyacht Charters</h4>
+                            <p>Explore the Mediterranean in style.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products / Offers -->
+        <section id="products" class="py-5" style="background: #0f1219;">
+            <div class="container py-4">
+                <div class="text-center mb-5" data-aos="fade-down">
+                    <h2 class="section-title">Signature Escapes</h2>
+                    <p>Limited edition luxury offers</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4" data-aos="zoom-in-up">
+                        <div class="product-card">
+                            <img src="https://images.pexels.com/photos/3385159/pexels-photo-3385159.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy">
+                            <div class="p-4">
+                                <h5>Maldives Private Island</h5>
+                                <p class="text-warning">$8,990 / 7 nights</p>
+                                <button class="btn btn-outline-warning rounded-pill w-100">Book Escape</button>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
+                        <div class="product-card">
+                            <img src="https://images.pexels.com/photos/2412601/pexels-photo-2412601.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy">
+                            <div class="p-4">
+                                <h5>Swiss Glacier Express</h5>
+                                <p class="text-warning">$6,490 / 5 days</p>
+                                <button class="btn btn-outline-warning rounded-pill w-100">Reserve</button>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
+                        <div class="product-card">
+                            <img src="https://images.pexels.com/photos/3155666/pexels-photo-3155666.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy">
+                            <div class="p-4">
+                                <h5>Safari & Beach Combo</h5>
+                                <p class="text-warning">$12,490 / 12 days</p>
+                                <button class="btn btn-outline-warning rounded-pill w-100">Inquire</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Product Category -->
+        <section id="categories" class="py-5" style="background:#07090e;">
+            <div class="container text-center">
+                <h2 class="section-title">Our Product Categories</h2>
+                <p>Premium export-quality goods</p>
+                
+                <div class="row g-4 mt-4">
+                    <!-- <div class="col-md-3">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-tint"></i></div>
+                            <h4>Honey</h4>
+                        </div>
+                    </div> -->
+
+                    <div class="col-md-3" onclick="openProductSection('honey')">
+  <div class="service-card flip-card">
+
+    <div class="card-inner">
+
+      <!-- FRONT -->
+      <div class="card-front">
+        <div class="service-icon">
+          <i class="fas fa-tint"></i>
+        </div>
+        <h4>Honey</h4>
+      </div>
+
+      <!-- BACK -->
+      <div class="card-back">
+        <img src="https://campechehoneyandwaxsprderl.com/assets/images/dark/2.png" />
+        <!-- <h5 class="mt-3">Honey</h5> -->
+      </div>
+
+    </div>
+
+  </div>
+</div>
+                    
+                    <div class="col-md-3">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                            <h4>Rice</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-mug-hot"></i></div>
+                            <h4>Tea</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-pepper-hot"></i></div>
+                            <h4>Spices</h4>
+                        </div>
+                    </div>
+
+                    <!-- Real One -->
+                     <section id="productDetails" class="product-details-section">
+  <div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 id="productTitle">Products</h2>
+      <button class="btn btn-danger" onclick="closeProductSection()">Close ✖</button>
+    </div>
+
+    <div class="row g-4" id="productGrid">
+      <!-- dynamic products here -->
+    </div>
+
+  </div>
+</section>
+                    
+                    <!-- HONEY -->
+                    <!-- <div class="col-md-6 col-lg-3">
+                        <div class="product-card">
+                            <img src="https://campechehoneyandwaxsprderl.com/assets/images/dark/2.png" />
+                            <div class="p-4">
+                                <h5>Honey</h5>
+                                <ul class="text-secondary small">
+                                    <li>Multiflora Honey</li>
+                                    <li>Jamun Honey</li>
+                                    <li>Acacia Honey</li>
+                                    <li>Sidr Honey</li>
+                                    <li>Eucalyptus Honey</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <!-- RICE -->
+                    <!-- <div class="col-md-6 col-lg-3">
+                        <div class="product-card">
+                            <img src="https://ucorpexim.com/public/uploads/news-319.jpg" />
+                            <div class="p-4">
+                                <h5>Non-Basmati Rice</h5>
+                                <ul class="text-secondary small">
+                                    <li>Sona Masoori</li>
+                                    <li>Ponni Rice</li>
+                                    <li>Swarna Rice</li>
+                                    <li>Sharbati Rice</li>
+                                    <li>Joha Rice</li>
+                                    <li>Gobindobhog</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                
+                    <!-- TEA -->
+                    <!-- <div class="col-md-6 col-lg-3">
+                        <div class="product-card">
+                            <img src="https://www.dial4trade.com/uploaded_files/helpimgs/help_3b2e573.jpg" />
+                            <div class="p-4">
+                                <h5>Tea</h5>
+                                <ul class="text-secondary small">
+                                    <li>Assam Tea</li>
+                                    <li>Darjeeling Tea</li>
+                                    <li>Nilgiri Tea</li>
+                                    <li>Kangra Tea</li>
+                                    <li>Kashmiri Kahwa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                
+                    <!-- SPICES -->
+                    <!-- <div class="col-md-6 col-lg-3">
+                        <div class="product-card">
+                            <img src="../assets/images/spices.jpg" />
+                            <div class="p-4">
+                                <h5>Spices</h5>
+                                <ul class="text-secondary small">
+                                    <li>Turmeric</li>
+                                    <li>Cumin</li>
+                                    <li>Coriander</li>
+                                    <li>Cardamom</li>
+                                    <li>Red Chilli</li>
+                                    <li>Hing</li>
+                                    <li>Cloves</li>
+                                    <li>Fenugreek</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+            
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+        <section id="categories" class="py-5" style="background:#07090e;">
+            <div class="container text-center">
+                <h2 class="section-title">Our Product Categories</h2>
+                <p>Premium export-quality goods</p>
+                
+                <div class="swiper category-swiper">
+  <div class="swiper-wrapper">
+
+    <!-- ITEM -->
+    <div class="swiper-slide">
+      <div class="service-card honey-card">
+        <div class="service-icon"><i class="fas fa-tint"></i></div>
+        <h4>Honey</h4>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-seedling"></i></div>
+        <h4>Rice</h4>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-mug-hot"></i></div>
+        <h4>Tea</h4>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-pepper-hot"></i></div>
+        <h4>Spices</h4>
+      </div>
+    </div>
+
+    <!-- Add more categories here -->
+
+  </div>
+
+  <!-- ARROWS -->
+  <div class="swiper-button-next category-next"></div>
+  <div class="swiper-button-prev category-prev"></div>
+</div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+    
+        <!-- Global Export Section -->
+        <section class="py-5 parallax-bg" style="background-image:url('https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg');">
+            <div class="overlay-dark text-center">
+                <div class="container">
+                    <h2 class="section-title">Exporting Worldwide</h2>
+                    <p class="lead"> We export high-quality agricultural products to Asia, Europe, Middle East, and beyond. </p>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Top 10 Reasons -->
+        <section id="reasons" class="py-5" style="background: #07090e;">
+            <div class="container py-4">
+                <div class="text-center mb-5">
+                    <h2 class="section-title"> Top 10 Reasons to Fly With Vela </h2>
+                    <p> Unmatched excellence </p>
+                </div>
+        
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-crown fa-3x text-warning mb-3"></i>
+                            <h5>1. Elite Concierge</h5>
+                            <p>Dedicated 24/7 assistant</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-globe-asia fa-3x text-warning mb-3"></i>
+                            <h5>2. 80+ Destinations</h5>
+                            <p>Off-the-beaten-path access</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
+                            <h5>3. Safety First</h5>
+                            <p>Medical & security protection</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-champagne-glasses fa-3x text-warning mb-3"></i>
+                            <h5>4. VIP Experiences</h5>
+                            <p>After-hours museum tours</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="250">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-hand-sparkles fa-3x text-warning mb-3"></i>
+                            <h5>5. Sustainable Luxury</h5>
+                            <p>Carbon-neutral operations</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-gem fa-3x text-warning mb-3"></i>
+                            <h5>6. Insider Access</h5>
+                            <p>Private events & galas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="350">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-plane-departure fa-3x text-warning mb-3"></i>
+                            <h5>7. Jets & Yachts</h5>
+                            <p>Seamless charters</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                            <h5>8. Award-Winning</h5>
+                            <p>World Travel Awards 2025</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="450">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-wifi fa-3x text-warning mb-3"></i>
+                            <h5>9. Global Network</h5>
+                            <p>Partners in 50+ countries</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+                        <div class="glass-card p-4 text-center">
+                            <i class="fas fa-heart fa-3x text-warning mb-3"></i>
+                            <h5>10. 100% Tailored</h5>
+                            <p>No templates, just dreams</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Parallax + Counter Section -->
+        <section class="parallax-bg" style="background-image: url('https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+            <div class="overlay-dark">
+                <div class="container text-center py-5">
+                    <div class="row g-5">
+                        <div class="col-md-3" data-aos="flip-up">
+                            <div class="counter-box">
+                                <div><span class="counter-num" data-target="3420">0</span>+</div>
+                                <p>Luxury Trips</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-aos="flip-up" data-aos-delay="100">
+                            <div class="counter-box">
+                                <div><span class="counter-num" data-target="124">0</span></div>
+                                <p>Destinations</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-aos="flip-up" data-aos-delay="200">
+                            <div class="counter-box">
+                                <div><span class="counter-num" data-target="5280">0</span>+</div>
+                                <p>Happy Clients</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-aos="flip-up" data-aos-delay="300">
+                            <div class="counter-box">
+                                <div><span class="counter-num" data-target="98">0</span>%</div>
+                                <p>Satisfaction Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Testimonials Carousel -->
+        <section id="testimonials" class="py-5" style="background: #0b0e14;">
+            <div class="container py-4">
+                <div class="text-center mb-5">
+                    <h2 class="section-title">Whispers of Wanderlust</h2>
+                    <p>What our discerning guests say</p>
+                </div>
+                <div class="swiper testimonial-swiper pb-5">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testi-card">
+                                <i class="fas fa-quote-right fa-2x text-warning mb-3"></i>
+                                <p>"Vela orchestrated a flawless African safari. The attention to detail was divine."</p>
+                                <h5 class="mt-3">— Jonathan R.</h5>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testi-card">
+                                <i class="fas fa-quote-right fa-2x text-warning mb-3"></i>
+                                <p>"From private jet to overwater bungalow: absolute perfection. Best agency ever!"</p>
+                                <h5>— Sophia & Mark</h5>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testi-card">
+                                <i class="fas fa-quote-right fa-2x text-warning mb-3"></i>
+                                <p>"The VIP access to the Louvre at night was unforgettable. Concierge team is stellar."</p>
+                                <h5>— Elena V.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- CTA Gradient Section -->
+        <section style="background: linear-gradient(95deg, #ff5e3a, #c73b1a);">
+            <div class="container text-center py-5" data-aos="zoom-in">
+                <h2 class="display-5 fw-bold text-white">Unlock a world of exclusivity</h2>
+                <p class="lead text-white">Let’s design your next chapter together.</p>
+                <a href="#contact" class="btn btn-dark btn-lg px-5 rounded-pill mt-2">Start Your Journey <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+        </section>
+    
+        <!-- Contact Section + Map -->
+        <section id="contact" class="py-5" style="background: #080b10;">
+            <div class="container py-4">
+                <div class="row g-5">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div class="contact-form">
+                            <h3 class="mb-4">Concierge Inquiry</h3>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-custom" placeholder="Full Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control form-control-custom" placeholder="Email Address" required>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea rows="4" class="form-control form-control-custom" placeholder="Your dream destination or request..."></textarea>
+                                </div>
+                                <button class="btn btn-glow w-100">Send Request <i class="fas fa-feather-alt ms-2"></i></button>
+                            </form>
+                            <div class="mt-4 d-flex gap-4 flex-wrap">
+                                <div><i class="fas fa-map-marker-alt text-warning me-2"></i> 432 Park Avenue, NYC</div>
+                                <div><i class="fas fa-phone-alt text-warning me-2"></i> +1 888 555 2025</div>
+                                <div><i class="fas fa-envelope text-warning me-2"></i> concierge@vela.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <div class="rounded-4 overflow-hidden shadow" style="height: 400px;">
+                            <iframe src="https://maps.google.com/maps?q=Central%20Park%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Modal Section -->
+        <!-- <div id="imageModal" class="image-modal" onclick="closeImage()">
+  <img id="modalImg" />
+</div> -->
+
+
+        <!-- Footer Multi-Column -->
+        <footer class="pt-5 pb-4">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <h4 class="text-warning">VELA</h4>
+                        <p>Curated luxury travel experiences since 2012. Global access, bespoke design.</p>
+                        <div>
+                            <i class="fab fa-instagram fa-2x me-3"></i>
+                            <i class="fab fa-twitter fa-2x me-3"></i>
+                            <i class="fab fa-facebook fa-2x"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Explore</h5>
+                        <ul class="list-unstyled">
+                            <li>Destinations</li>
+                            <li>Private Jets</li>
+                            <li>Villas</li>
+                            <li>Events</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Newsletter</h5>
+                        <div class="input-group">
+                            <input type="email" class="form-control bg-dark text-white" placeholder="Email">
+                            <button class="btn btn-warning">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <small class="text-secondary">Exclusive offers & early access</small>
+                    </div>
+                </div>
+                <hr class="mt-4 opacity-25">
+                <div class="text-center pt-3 small">© 2025 VELA — Beyond the expected. All rights reserved.</div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        
+        <script src="../js/scripts.js"></script>
+
+        <script>
+            const products = {
+  honey: [
+    {
+      name: "Multiflora Honey",
+      img: "https://images.pexels.com/photos/132694/pexels-photo-132694.jpeg"
+    },
+    {
+      name: "Jamun Honey",
+      img: "https://images.pexels.com/photos/4110254/pexels-photo-4110254.jpeg"
+    },
+    {
+      name: "Acacia Honey",
+      img: "https://images.pexels.com/photos/3026807/pexels-photo-3026807.jpeg"
+    },
+    {
+      name: "Sidr Honey",
+      img: "https://images.pexels.com/photos/5946083/pexels-photo-5946083.jpeg"
+    },
+    {
+      name: "Eucalyptus Honey",
+      img: "https://images.pexels.com/photos/3735206/pexels-photo-3735206.jpeg"
+    }
+  ]
+};
+
+function openProductSection(type) {
+  const section = document.getElementById("productDetails");
+  const grid = document.getElementById("productGrid");
+  const title = document.getElementById("productTitle");
+
+  grid.innerHTML = "";
+  title.innerText = type.toUpperCase() + " PRODUCTS";
+
+  products[type].forEach(p => {
+    grid.innerHTML += `
+      <div class="col-md-4">
+        <div class="product-item" onclick="openImage('${p.img}')">
+          <img src="${p.img}" />
+          <div class="p-3 text-center">
+            <h6>${p.name}</h6>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  section.classList.add("show");
+}
+
+function closeProductSection() {
+  document.getElementById("productDetails").classList.remove("show");
+}
+        </script>
+    
+
+
+    <script>
+        function openImage(src) {
+  document.getElementById("modalImg").src = src;
+  document.getElementById("imageModal").classList.add("show");
+}
+
+function closeImage() {
+  document.getElementById("imageModal").classList.remove("show");
+}
+    </script>
+
+
+<!-- category scroll -->
+<script>
+   new Swiper('.category-swiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  centeredSlides: true,
+
+  grabCursor: true, // drag with mouse
+  loop: false,
+
+  navigation: {
+    nextEl: '.category-next',
+    prevEl: '.category-prev',
+  },
+
+  breakpoints: {
+    320: {
+      spaceBetween: 12,
+    },
+    768: {
+      spaceBetween: 20,
+    },
+    1024: {
+      spaceBetween: 25,
+    }
+  }
+});
+    </script>
+    </body>
+</html>
