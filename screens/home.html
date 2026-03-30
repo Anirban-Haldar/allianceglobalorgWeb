@@ -224,6 +224,8 @@
     /* ONLY affects honey card */
 .flip-card {
   perspective: 1000px;
+  height: 100%;
+  min-height: 220px;
   padding: 0; /* remove inner spacing for flip */
 }
 
@@ -231,6 +233,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 220px;
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
@@ -244,8 +247,9 @@
 .flip-card .card-front,
 .flip-card .card-back {
   position: absolute;
-  width: 100%;
-  height: 98%;
+  inset: 0;
+  /* width: 100%;
+  height: 98%; */
   backface-visibility: hidden;
 
   display: flex;
@@ -272,27 +276,46 @@
 .flip-card .card-back img {
   /* width: 80px;
   height: auto; */
-  height: 100%;
+  max-height: 120px;
   object-fit: contain;
-  width: 100%;
+  max-width: 100%;
 }
 
+@media (max-width: 768px) {
+  .flip-card {
+    min-height: 180px;
+  }
+
+  .flip-card .card-back img {
+    max-height: 90px;
+  }
+}
 
 
 /* Product Details Section */
 .product-details-section {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  border: 1px solid #ff6a4b;
   background: #0a0c10;
-  z-index: 9999;
-  overflow-y: auto;
+  margin-top: 20px;
   display: none;
+  border-radius: 20px;
+  padding: 20px;
+  animation: feadeInUp 0.5s ease;
 }
 .product-details-section.show {
   display: block;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* product cards */
@@ -309,7 +332,19 @@
   object-fit: cover;
 }
 .product-item:hover {
-  transform: translateY(-8px);
+  /* transform: translateY(-8px); */
+  transform: translateY(-15px) rotateX(3deg);
+      box-shadow: 0 25px 40px -12px rgba(255, 106, 75, 0.3);
+      border-bottom: 2px solid #ff6a4b;
+}
+
+.product-item h6 {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.product-item:hover h6 {
+  color: #ff6a4b; /* same theme orange */
 }
 
 /* Image Modal Section */
@@ -328,9 +363,41 @@
 .image-modal img {
   max-width: 90%;
   max-height: 90%;
+  border-radius: 10px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 .image-modal.show {
   display: flex;
+}
+
+.btn-glow-sm {
+  background: linear-gradient(45deg, #ff6a4b, #ff8c42);
+  border: none;
+  padding: 6px 20px !important;   /* smaller height */
+  border-radius: 30px;
+  font-size: 0.8rem !important;  /* smaller font */
+  font-weight: 400;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 106, 75, 0.35);
+  display: inline-block;
+  text-decoration-line: none !important;
+}
+
+.btn-glow-sm:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(255, 106, 75, 0.5);
 }
 
 
@@ -452,15 +519,33 @@
     .form-control-custom {
       background: #1e2630;
       border: 1px solid #2f3a46;
-      color: white;
+      color: #ffffff !important;
       border-radius: 60px;
-      padding: 12px 20px;
+      padding: 12px 40px;
     }
     .form-control-custom:focus {
       background: #252f3a;
       border-color: #ff6a4b;
       box-shadow: 0 0 0 0.2rem rgba(255,106,75,0.25);
     }
+
+    .form-control-custom::placeholder {
+  color: #cfceceb5;
+  opacity: 1;
+}
+
+.form-control-custom::-webkit-input-placeholder {
+  color: #cfceceb5;
+}
+
+.form-control-custom:-ms-input-placeholder {
+  color: #cfceceb5;
+}
+
+.form-control-custom::-ms-input-placeholder {
+  color: #cfceceb5;
+}
+
     footer {
       background: #030507;
     }
@@ -522,7 +607,7 @@
                         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#products">Offers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
                         <li class="nav-item"><a class="nav-link" href="#reasons">Top 10</a></li>
                         <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -658,7 +743,7 @@
         </section>
 
         <!-- Products / Offers -->
-        <section id="products" class="py-5" style="background: #0f1219;">
+        <!-- <section id="products" class="py-5" style="background: #0f1219;">
             <div class="container py-4">
                 <div class="text-center mb-5" data-aos="fade-down">
                     <h2 class="section-title">Signature Escapes</h2>
@@ -700,15 +785,15 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         
         <!-- Product Category -->
-        <section id="categories" class="py-5" style="background:#07090e;">
+        <section id="products" class="py-5" style="background:#07090e;">
             <div class="container text-center">
                 <h2 class="section-title">Our Product Categories</h2>
                 <p>Premium export-quality goods</p>
                 
-                <div class="row g-4 mt-4">
+                <div class="row g-4 mt-4" id="categoryRow">
                     <!-- <div class="col-md-3">
                         <div class="service-card">
                             <div class="service-icon"><i class="fas fa-tint"></i></div>
@@ -716,7 +801,7 @@
                         </div>
                     </div> -->
 
-                    <div class="col-md-3" onclick="openProductSection('honey')">
+                    <div class="col-md-3" onclick="openProductSection('honey', this)">
   <div class="service-card flip-card">
 
     <div class="card-inner">
@@ -731,8 +816,9 @@
 
       <!-- BACK -->
       <div class="card-back">
-        <img src="https://campechehoneyandwaxsprderl.com/assets/images/dark/2.png" />
-        <!-- <h5 class="mt-3">Honey</h5> -->
+        <img src="../assets/images/honey2.png" />
+        <!-- <h6 class="mt-3">Details</h6> -->
+         <a href="#" class="btn-glow-sm mt-2">Details</a>
       </div>
 
     </div>
@@ -761,21 +847,7 @@
                         </div>
                     </div>
 
-                    <!-- Real One -->
-                     <section id="productDetails" class="product-details-section">
-  <div class="container py-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 id="productTitle">Products</h2>
-      <button class="btn btn-danger" onclick="closeProductSection()">Close ✖</button>
-    </div>
-
-    <div class="row g-4" id="productGrid">
-      <!-- dynamic products here -->
-    </div>
-
-  </div>
-</section>
+                    
                     
                     <!-- HONEY -->
                     <!-- <div class="col-md-6 col-lg-3">
@@ -850,6 +922,23 @@
                     </div> -->
             
                 </div>
+
+
+                <!-- Real One -->
+                     <section id="productDetails" class="product-details-section">
+  <div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 id="productTitle">Products</h2>
+      <button class="btn btn-danger" onclick="closeProductSection()">Close ✖</button>
+    </div>
+
+    <div class="row g-4" id="productGrid">
+      <!-- dynamic products here -->
+    </div>
+
+  </div>
+</section>
             </div>
         </section>
 
@@ -859,7 +948,7 @@
 
 
 
-        <section id="categories" class="py-5" style="background:#07090e;">
+        <!-- <section id="categories" class="py-5" style="background:#07090e;">
             <div class="container text-center">
                 <h2 class="section-title">Our Product Categories</h2>
                 <p>Premium export-quality goods</p>
@@ -867,7 +956,7 @@
                 <div class="swiper category-swiper">
   <div class="swiper-wrapper">
 
-    <!-- ITEM -->
+    
     <div class="swiper-slide">
       <div class="service-card honey-card">
         <div class="service-icon"><i class="fas fa-tint"></i></div>
@@ -896,16 +985,21 @@
       </div>
     </div>
 
-    <!-- Add more categories here -->
+    <div class="swiper-slide">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-fan"></i></div>
+        <h4>Private Aviation</h4>
+      </div>
+    </div>
 
   </div>
 
-  <!-- ARROWS -->
+  
   <div class="swiper-button-next category-next"></div>
   <div class="swiper-button-prev category-prev"></div>
 </div>
             </div>
-        </section>
+        </section> -->
 
 
 
@@ -1092,29 +1186,31 @@
                 <div class="row g-5">
                     <div class="col-lg-6" data-aos="fade-right">
                         <div class="contact-form">
-                            <h3 class="mb-4">Concierge Inquiry</h3>
+                            <h3 class="mb-4">Contact Us</h3>
                             <form id="contactForm">
                                 <div class="mb-3">
                                     <input type="text" class="form-control form-control-custom" placeholder="Full Name" required>
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <input type="email" class="form-control form-control-custom" placeholder="Email Address" required>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <textarea rows="4" class="form-control form-control-custom" placeholder="Your dream destination or request..."></textarea>
                                 </div>
                                 <button class="btn btn-glow w-100">Send Request <i class="fas fa-feather-alt ms-2"></i></button>
                             </form>
                             <div class="mt-4 d-flex gap-4 flex-wrap">
-                                <div><i class="fas fa-map-marker-alt text-warning me-2"></i> 432 Park Avenue, NYC</div>
-                                <div><i class="fas fa-phone-alt text-warning me-2"></i> +1 888 555 2025</div>
-                                <div><i class="fas fa-envelope text-warning me-2"></i> concierge@vela.com</div>
+                                <div><i class="fas fa-map-marker-alt text-warning me-2"></i> Ground Floor, 29/9 North Purbachal, Haltu, Garfa, Kolkata 700078</div>
+                                <div><i class="fas fa-phone-alt text-warning me-2"></i> +91 98366 19444</div>
+                                <div><i class="fas fa-phone-alt text-warning me-2"></i> +91 99033 78665</div>
+                                <div><i class="fas fa-envelope text-warning me-2"></i> info@allianceglobalorg.com</div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6" data-aos="fade-left">
-                        <div class="rounded-4 overflow-hidden shadow" style="height: 400px;">
-                            <iframe src="https://maps.google.com/maps?q=Central%20Park%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="rounded-4 overflow-hidden shadow" style="height: 500px;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.1350268630354!2d88.39478887520066!3d22.50664353538475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02715730d36cff%3A0x7429d4157f6753a0!2s29%2C%20N%20Purbachal%20Rd%2C%20North%20Purbachal%2C%20Haltu%2C%20Kolkata%2C%20West%20Bengal%20700078!5e1!3m2!1sen!2sin!4v1774695816710!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.1350268630354!2d88.39478887520066!3d22.50664353538475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02715730d36cff%3A0x7429d4157f6753a0!2s29%2C%20N%20Purbachal%20Rd%2C%20North%20Purbachal%2C%20Haltu%2C%20Kolkata%2C%20West%20Bengal%20700078!5e1!3m2!1sen!2sin!4v1774695816710!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                         </div>
                     </div>
                 </div>
@@ -1123,9 +1219,9 @@
 
 
         <!-- Modal Section -->
-        <!-- <div id="imageModal" class="image-modal" onclick="closeImage()">
+        <div id="imageModal" class="image-modal" onclick="closeImage()">
   <img id="modalImg" />
-</div> -->
+</div>
 
 
         <!-- Footer Multi-Column -->
@@ -1198,20 +1294,60 @@
   ]
 };
 
-function openProductSection(type) {
-  const section = document.getElementById("productDetails");
-  const grid = document.getElementById("productGrid");
-  const title = document.getElementById("productTitle");
+// function openProductSection(type) {
+//   const section = document.getElementById("productDetails");
+//   const grid = document.getElementById("productGrid");
+//   const title = document.getElementById("productTitle");
 
-  grid.innerHTML = "";
-  title.innerText = type.toUpperCase() + " PRODUCTS";
+//   grid.innerHTML = "";
+//   title.innerText = type.toUpperCase() + " PRODUCTS";
+
+//   products[type].forEach(p => {
+//     grid.innerHTML += `
+//       <div class="col-md-4">
+//         <div class="product-item" onclick="openImage('${p.img}')">
+//           <img src="${p.img}" />
+//           <div class="p-3 text-center">
+//             <h6>${p.name}</h6>
+//           </div>
+//         </div>
+//       </div>
+//     `;
+//   });
+
+//   section.classList.add("show");
+//    // 🔥 smooth scroll to section
+//   section.scrollIntoView({ behavior: "smooth" });
+// }
+
+
+function openProductSection(type, el) {
+  let section = document.getElementById("productDetails");
+
+  // remove old section
+  if (section) section.remove();
+
+  // create new section
+  section = document.createElement("div");
+  section.id = "productDetails";
+  section.className = "product-details-section show";
+
+  section.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>${type.toUpperCase()} PRODUCTS</h2>
+      <button class="btn btn-danger" onclick="closeProductSection()">Close ✖</button>
+    </div>
+    <div class="row g-4" id="productGrid"></div>
+  `;
+
+  const grid = section.querySelector("#productGrid");
 
   products[type].forEach(p => {
     grid.innerHTML += `
       <div class="col-md-4">
         <div class="product-item" onclick="openImage('${p.img}')">
           <img src="${p.img}" />
-          <div class="p-3 text-center">
+          <div class="p-3 text-center ">
             <h6>${p.name}</h6>
           </div>
         </div>
@@ -1219,8 +1355,12 @@ function openProductSection(type) {
     `;
   });
 
-  section.classList.add("show");
+  // ✅ FIX: insert AFTER entire category row (not inside it)
+  document.getElementById("categoryRow").after(section);
+
+  section.scrollIntoView({ behavior: "smooth" });
 }
+
 
 function closeProductSection() {
   document.getElementById("productDetails").classList.remove("show");
@@ -1242,7 +1382,7 @@ function closeImage() {
 
 
 <!-- category scroll -->
-<script>
+<!-- <script>
    new Swiper('.category-swiper', {
   slidesPerView: 'auto',
   spaceBetween: 20,
@@ -1268,6 +1408,6 @@ function closeImage() {
     }
   }
 });
-    </script>
+    </script> -->
     </body>
 </html>
