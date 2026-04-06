@@ -1,10 +1,10 @@
 const products = {
   honey: [
-    { name: "Multiflora Honey", img: "https://images.pexels.com/photos/132694/pexels-photo-132694.jpeg" },
-    { name: "Jamun Honey", img: "https://images.pexels.com/photos/4110254/pexels-photo-4110254.jpeg" },
-    { name: "Acacia Honey", img: "https://images.pexels.com/photos/3026807/pexels-photo-3026807.jpeg" },
-    { name: "Sidr Honey", img: "https://images.pexels.com/photos/5946083/pexels-photo-5946083.jpeg" },
-    { name: "Eucalyptus Honey", img: "https://images.pexels.com/photos/3735206/pexels-photo-3735206.jpeg" }
+    { name: "Multiflora Honey", img: "../assets/images/honey/Multiflora.jpg" },
+    { name: "Jamun Honey", img: "../assets/images/honey/jamun honey.png" },
+    { name: "Acacia Honey", img: "../assets/images/honey/ACACIA.jpg" },
+    { name: "Sidr Honey", img: "../assets/images/honey/sidrhoney.jpg" },
+    { name: "Eucalyptus Honey", img: "../assets/images/honey/EUCALYPTUS HONEY.jpg" }
   ],
 
   rice: [
@@ -17,11 +17,11 @@ const products = {
   ],
 
   tea: [
-    { name: "Assam Tea", img: "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg" },
-    { name: "Darjeeling Tea", img: "https://images.pexels.com/photos/230477/pexels-photo-230477.jpeg" },
-    { name: "Nilgiri Tea", img: "https://images.pexels.com/photos/5946970/pexels-photo-5946970.jpeg" },
-    { name: "Kangra Tea", img: "https://images.pexels.com/photos/1493080/pexels-photo-1493080.jpeg" },
-    { name: "Kashmiri Kahwa", img: "https://images.pexels.com/photos/161559/background-bitter-breakfast-bright-161559.jpeg" }
+    { name: "Assam Tea", img: "../assets/images/tea/AssamTee.jpg" },
+    { name: "Darjeeling Tea", img: "../assets/images/tea/DARJEELING TEA.jpg" },
+    { name: "Nilgiri Tea", img: "../assets/images/tea/Nilgiritea.jpg" },
+    { name: "Kangra Tea", img: "../assets/images/tea/kangratea.jpg" },
+    { name: "Kashmiri Kahwa", img: "../assets/images/tea/kashmiri kahwa.jpg" }
   ],
 
   spices: [
