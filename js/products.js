@@ -8,12 +8,12 @@ const products = {
   ],
 
   rice: [
-    { name: "Sona Masoori Rice", img: "https://images.pexels.com/photos/4110253/pexels-photo-4110253.jpeg" },
-    { name: "Ponni Rice", img: "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg" },
-    { name: "Swarna Rice", img: "https://images.pexels.com/photos/1580466/pexels-photo-1580466.jpeg" },
-    { name: "Sharbati Rice", img: "https://images.pexels.com/photos/4110260/pexels-photo-4110260.jpeg" },
-    { name: "Joha Rice", img: "https://images.pexels.com/photos/209206/pexels-photo-209206.jpeg" },
-    { name: "Gobindobhog Rice", img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" }
+    { name: "Sona Masoori Rice", img: "../assets/images/rice/Sona Masoori.jpg" },
+    { name: "Ponni Rice", img: "../assets/images/rice/ponni.jpg" },
+    { name: "Swarna Rice", img: "../assets/images/rice/swarna rice.jpg" },
+    { name: "Sharbati Rice", img: "../assets/images/rice/sharbati.jpg" },
+    { name: "Joha Rice", img: "../assets/images/rice/joharice.jpg" },
+    { name: "Gobindobhog Rice", img: "../assets/images/rice/Gobindobhog.jpg" }
   ],
 
   tea: [
@@ -25,14 +25,14 @@ const products = {
   ],
 
   spices: [
-    { name: "Turmeric", img: "https://images.pexels.com/photos/4198714/pexels-photo-4198714.jpeg" },
-    { name: "Cumin", img: "https://images.pexels.com/photos/4198709/pexels-photo-4198709.jpeg" },
-    { name: "Coriander", img: "https://images.pexels.com/photos/4198707/pexels-photo-4198707.jpeg" },
-    { name: "Cardamom", img: "https://images.pexels.com/photos/5946974/pexels-photo-5946974.jpeg" },
-    { name: "Red Chilli", img: "https://images.pexels.com/photos/4198711/pexels-photo-4198711.jpeg" },
-    { name: "Hing (Asafoetida)", img: "https://images.pexels.com/photos/161556/spice-condiment-food-nutrition-161556.jpeg" },
-    { name: "Cloves", img: "https://images.pexels.com/photos/4198708/pexels-photo-4198708.jpeg" },
-    { name: "Fenugreek", img: "https://images.pexels.com/photos/5946973/pexels-photo-5946973.jpeg" }
+    { name: "Turmeric", img: "../assets/images/spices/turmaric.jpg" },
+    { name: "Cumin", img: "../assets/images/spices/cumin.jpg" },
+    { name: "Coriander", img: "../assets/images/spices/Coriander.jpeg" },
+    { name: "Cardamom", img: "../assets/images/spices/cardamom.png" },
+    { name: "Red Chilli", img: "../assets/images/spices/redchili.jpeg" },
+    { name: "Hing (Asafoetida)", img: "../assets/images/spices/asafoetida.jpg" },
+    { name: "Cloves", img: "../assets/images/spices/Cloves_Whole.jpg" },
+    { name: "Fenugreek", img: "../assets/images/spices/fenugreek.jpeg" }
   ]
 };
 
