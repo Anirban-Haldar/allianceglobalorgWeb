@@ -33,7 +33,27 @@ const products = {
     { name: "Hing (Asafoetida)", img: "../assets/images/spices/asafoetida.jpg" },
     { name: "Cloves", img: "../assets/images/spices/Cloves_Whole.jpg" },
     { name: "Fenugreek", img: "../assets/images/spices/fenugreek.jpeg" }
-  ]
+  ],
+
+  towels: [
+    { name: "Bath Towels", img: "../assets/images/towels/bath towels.jpeg" },
+    { name: "Hand Towels", img: "../assets/images/towels/Hand Towels.jpg" },
+    { name: "Face Towels", img: "../assets/images/towels/Face Towels.jpg" },
+    { name: "Microfiber Towels", img: "../assets/images/towels/Microfiber Towels.jpg" },
+    { name: "Bathrobes", img: "../assets/images/towels/Bathrobes.jpg" },
+    { name: "Hair Towels / Turbans", img: "../assets/images/towels/Hair Towels__Turbans.jpg" }
+  ],
+
+  bedsheets: [
+    { name: "Cotton", img: "../assets/images/beadsheet/Cotton.jpg" },
+    { name: "Egyptian Cotton", img: "../assets/images/beadsheet/Egyptian Cotton.jpg" },
+    { name: "Linen", img: "../assets/images/beadsheet/Linen.jpg" },
+    { name: "Polyester & Blend", img: "../assets/images/beadsheet/Polyester & Blend.jpg" },
+    { name: "Falnnel", img: "../assets/images/beadsheet/Falnnel.jpg" },
+    { name: "Satin & Silk", img: "../assets/images/beadsheet/Satin & Silk.jpg" },
+    { name: "Microfiber", img: "../assets/images/beadsheet/Microfiber.jpg" },
+    { name: "Handloom & Khadi", img: "../assets/images/beadsheet/Handloom & Khadi.jpg" }
+  ],
 };
 
 function openProductSection(type, el) {
@@ -70,8 +90,9 @@ function openProductSection(type, el) {
         `;
     });
 
-    // ✅ FIX: insert AFTER entire category row (not inside it)
-    document.getElementById("categoryRow").after(section);
+    // ✅ insert AFTER parent row of clicked card (not inside it)
+    const parentRow = el.closest(".category-row");
+    parentRow.after(section);
 
     section.scrollIntoView({ behavior: "smooth" });
 }

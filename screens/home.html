@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Alliance Global</title>
-        
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon_io/favicon-16x16.png">
+
     <!-- SEO -->
     <!-- <meta name="description" content="Vela Travel - Ultra-luxury journeys, curated escapes, and bespoke adventures around the world."> -->
 
@@ -43,7 +45,10 @@
     <!-- Sticky Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-premium" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="#">Alliance Global</a>
+        <!-- <a class="navbar-brand" href="#">Alliance Global</a> -->
+        <a class="navbar-brand" href="#">
+          <img src="../assets/images/alliancejpg_1.jpg" alt="Alliance Global" >
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
         </button>
@@ -346,7 +351,7 @@
         <h2 class="section-title">Our Product Categories</h2>
         <p>Premium export-quality goods</p>
             
-        <div class="row g-4 mt-4" id="categoryRow">
+        <div class="row g-4 mt-4 category-row">
           
           <!-- For Honey -->
           <div class="col-md-3" onclick="openProductSection('honey', this)">
@@ -429,6 +434,53 @@
               </div>
             </div>
           </div>
+        
+        </div>
+
+        <div class="row g-4 mt-4 category-row">
+          
+          <!-- For Towels -->
+          <div class="col-md-3" onclick="openProductSection('towels', this)">
+            <div class="service-card flip-card">
+              <div class="card-inner">
+                <!-- FRONT -->
+                <div class="card-front">
+                  <div class="service-icon">
+                    <i class="fas fa-bath"></i>
+                  </div>
+                  <h4>Towels</h4>
+                </div>
+                <!-- BACK -->
+                <div class="card-back">
+                  <img src="../assets/images/towel.jpg" />
+                  <a class="btn-glow-sm mt-2">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- For Bedsheets -->
+          <div class="col-md-3" onclick="openProductSection('bedsheets', this)">
+            <div class="service-card flip-card">
+              <div class="card-inner">
+                <!-- FRONT -->
+                <div class="card-front">
+                  <div class="service-icon">
+                    <i class="fas fa-bed"></i>
+                  </div>
+                  <h4>Bedsheets</h4>
+                </div>
+                <!-- BACK -->
+                <div class="card-back">
+                  <!-- <img src="https://images.pexels.com/photos/4110253/pexels-photo-4110253.jpeg" /> -->
+                  <img src="../assets/images/bedSheet.jpg" />
+                  <a class="btn-glow-sm mt-2">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- For Curtains -->
         
         </div>
 
@@ -693,7 +745,13 @@
         <div class="row g-4">
           <!-- Brand -->
           <div class="col-md-4">
-            <h4 class="text-warning">Alliance Global Exports</h4>
+            <!-- <h4 class="text-warning">Alliance Global Exports</h4> -->
+            <!-- <img src="../assets/images/alliancejpg_1.jpg" alt="Alliance Global Exports" height="50" class="mb-3"> -->
+             <div class="d-flex align-items-center mb-2">
+    <img src="../assets/images/allianceLOGO.jpg" alt="Alliance Global Exports" height="45" class="me-2">
+    <h4 class="text-warning mb-0">ALLIANCE GLOBAL</h4>
+  </div>
+
             <p>Supplying premium Indian spices and agricultural products to global markets with consistent quality, reliability, and trust.</p>
             <div>
               <i class="fab fa-linkedin fa-2x me-3"></i>
@@ -743,7 +801,7 @@
         <hr class="mt-4 opacity-25">
 
         <div class="text-center pt-3 small">
-          © 2026 Alliance Global Exports — Delivering quality spices worldwide.
+          © 2026 Alliance Global — Delivering quality spices worldwide.
           <br><br>
           <span> Developed by 
             <img src="../assets/images/indisol.jpg" alt="INDISOL" style="height:20px; vertical-align:middle; margin:0 5px;">
