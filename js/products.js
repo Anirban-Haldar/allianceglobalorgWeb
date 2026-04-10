@@ -56,6 +56,15 @@ const products = {
   ],
 };
 
+const pdfMap = {
+    honey: "../assets/doc/HONEY CATALOGUE.pdf",
+    rice: "",
+    tea: "../assets/doc/TEA CATALOGUE.pdf",
+    spices: "../assets/doc/SPICES CATALOGUE.pdf",
+    towels: "",
+    bedsheets: ""
+};
+
 function openProductSection(type, el) {
     let section = document.getElementById("productDetails");
     
@@ -70,7 +79,11 @@ function openProductSection(type, el) {
     section.innerHTML = `
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>${type.toUpperCase()} PRODUCTS</h2>
-            <button class="btn btn-danger" onclick="closeProductSection()">Close ✖</button>
+            <a class="btn-glow-sm" href="javascript:void(0)" onclick="openCatalogue('${type}')"><i class="fas fa-file-pdf me-2"></i>Product Catalogue</a>
+            <button class="btn btn-danger btn-glow-danger-sm" onclick="closeProductSection()">Close ✖</button>
+        </div>
+        <div>
+            <div id="customToast" class="custom-toast">No PDF available</div>
         </div>
         <div class="row g-4" id="productGrid"></div>
     `;
@@ -97,6 +110,26 @@ function openProductSection(type, el) {
     section.scrollIntoView({ behavior: "smooth" });
 }
 
+function openCatalogue(type) {
+    const pdf = pdfMap[type];
+
+    if (pdf) {
+        window.open(pdf, "_blank");
+    } else {
+        showToast("!! No catalogue available for this product.");
+    }
+}
+
+function showToast(message) {
+    const toast = document.getElementById("customToast");
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
 
 function closeProductSection() {
     document.getElementById("productDetails").classList.remove("show");
